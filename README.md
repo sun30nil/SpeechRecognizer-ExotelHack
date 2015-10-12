@@ -12,6 +12,12 @@ Following python modules are required for running the sample.py
 3) sphinxbase
 4) sklearn
 
+### Running the script
+
+Once you've cloned this repo and all the above requirements are met.
+1) Place all the mp3 files in the main folder containing the sample.py file
+2) Run the sample.py file (python sample.py) or run the shell script run.sh (./run.sh)
+
 ### Trainig dataset
 
 From mp3 the text converted data for training the model is in the file TrainingSet.txt
