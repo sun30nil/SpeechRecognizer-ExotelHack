@@ -6,6 +6,7 @@ import numpy as np
 import json
 
 _outputResultTo = "results.txt"
+_outputResultTo2 = "filename_pred.txt"
 
 
 def decodeSpeech(hmmd, lmdir, dictp, wavfile):
@@ -43,6 +44,7 @@ def read_mp3_files_from_current_dir():
 def process_mp3_files():
     files = read_mp3_files_from_current_dir()
     results = ""
+    results2 = ""
     for mp3File in files:
         outFileName = os.path.basename(mp3File).split(".")[0] + ".wav"
         convertMp3ToWav(mp3File, outFileName)
@@ -55,13 +57,16 @@ def process_mp3_files():
         predicted_class = compute_emotion(classText)
         print mp3File, "=>", predicted_class
         results += predicted_class + "\n"
+        results2 += mp3File + "->" + predicted_class + "\n"
         try:
             os.remove(outFileName)
         except OSError:
             pass
     try:
-        f = open(_outputResultTo, 'w')
-        f.write(results)
+        f1 = open(_outputResultTo, 'w')
+        f1.write(results)
+        f2 = open(_outputResultTo2, 'w')
+        f2.write(results2)
     except IOError:
         pass
 
